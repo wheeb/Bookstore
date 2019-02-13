@@ -1,0 +1,25 @@
+<!DOCTYPE
+html>
+<html xmlns= "http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Server Programming</title>
+</head>
+<body>
+
+<h3>asd</h3>
+<table class="table table-striped">
+<tr>
+<th>Name</th>
+<th>123</th>
+</tr>
+<tr th:each = "book : ${books}">
+<td th:text="${book.id} + ' ' + ${book.title} + ' ' ${book.author} + ${book.year} " ></td>
+
+
+</tr>
+</table>
+		
+
+
+</body>
+</html>

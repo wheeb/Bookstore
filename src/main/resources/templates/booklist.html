@@ -1,0 +1,44 @@
+<!DOCTYPE
+html>
+<html xmlns= "http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous">
+
+<title>Server Programming</title>
+</head>
+<body>
+
+
+<table class="table table-striped">
+<tr>
+<th>Id</th>
+<th>Title</th>
+<th>Author</th>
+<th>Year</th>
+<th>Isbn</th>
+<th>Price</th>
+<th>Delete</th>
+<th>Edit</th>
+</tr>
+<tr th:each = "book : ${books}">	
+
+<td th:text="${book.id}" ></td>
+<td th:text= " ${book.title}" ></td>
+<td th:text= " ${book.author}" ></td>
+<td th:text= "${book.year}" ></td>
+<td th:text= " ${book.isbn}" ></td>
+<td th:text= " ${book.price}" ></td>
+<td><a th:href="@{/delete/{id}(id=${book.id})}" class="btn btn-danger">Delete</a></td>    		
+<td><a th:href="@{/edit/{id}(id=${book.id})}" class="btn btn-warning">Edit</a></td>    		
+
+
+
+</tr>
+</table>
+	 <a href="/add" class="btn btn-success btn-primary btn-lg btn-block">Add Bok</a>    	
+
+		
+
+
+</body>
+</html>

@@ -16,16 +16,25 @@
 	<label for="author">author</label>
 	<input type="text" id="author" th:field="*{author}" class="form-control"/>
 					
-		<label for="year">year</label>
+	<label for="year">year</label>
 	<input type="text" id="year" th:field="*{year}" class="form-control"/>
 	
-		<label for="isbn">isbn</label>
+	<label for="isbn">isbn</label>
 	<input type="text" id="isbn" th:field="*{isbn}" class="form-control"/>
 	
-		<label for="price">price</label>
+	<label for="price">price</label>
 	<input type="text" id="price" th:field="*{price}" class="form-control"/>
+		
+	<div style="clear: both; display: block; height: 10px;"></div>
+							
+	<label for="catlist">Category</label>
+	<select id="catlist" th:field="*{category}" class="form-control">
+		<option th:each="category: ${categories}" th:value="${category.categoryid}" th:text="${category.name}"></option>
+	</select>
+	<div style="clear: both; display: block; height: 10px;"></div>
 	
 	<input type="submit" class="btn btn-success" value="Save"></input>
+	
 	
 
 </form>

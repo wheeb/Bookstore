@@ -11,6 +11,9 @@ import com.example.Bookstore1.domain.Book;
 import com.example.Bookstore1.domain.BookRepository;
 import com.example.Bookstore1.domain.Category;
 import com.example.Bookstore1.domain.CategoryRepository;
+import com.example.Bookstore1.domain.User;
+import com.example.Bookstore1.domain.UserRepository;
+
 
 
 @SpringBootApplication
@@ -24,7 +27,7 @@ public class Bookstore1Application {
 	
 	
 	@Bean
-	public CommandLineRunner demo(BookRepository repository, CategoryRepository catRepository) {
+	public CommandLineRunner demo(BookRepository repository, CategoryRepository catRepository, UserRepository uRepository) {
 	return (args) -> {
 		
 		catRepository.save(new Category("None"));
@@ -39,8 +42,11 @@ public class Bookstore1Application {
 		Book book2 = new Book(0 ," potteri", "J.K", 2017, "128j0412-1", (double) 1293, catRepository.findByName("Horror").get(0));
 		repository.save(book2);
 		
-
-
+			
+		User user1 = new User( "user", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "USER", "info@bookstore.com");
+		User user2 = new User("admin", "$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C", "ADMIN", "admin@bookstore.com");
+		uRepository.save(user1);
+		uRepository.save(user2);
 		
 
 	};

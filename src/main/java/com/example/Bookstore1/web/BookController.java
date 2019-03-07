@@ -18,6 +18,7 @@ import com.example.Bookstore1.domain.CategoryRepository;
 
 
 
+
 @Controller
 public class BookController {
 	@Autowired
@@ -40,31 +41,39 @@ public class BookController {
     	model.addAttribute("categories", catRepository.findAll());
         return "addbook";
     }  
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String save(Book book){
-        repository.save(book);
-        return "redirect:booklist";
-    } 
+
     
     @RequestMapping(value = "/edit/{id}")
     public String addStudent(@PathVariable("id") Long Id, Model model){
     model.addAttribute("book", repository.findById(Id));
 	model.addAttribute("categories", catRepository.findAll());
-
     return "editbook";
     }
     
-    
+	// Show all students
+    @RequestMapping(value="/login")
+    public String login() {	
+        return "login";
+    }	
     //rest, search by id 
     @RequestMapping(value="/books/{id}", method = RequestMethod.GET)
-    public @ResponseBody Optional<Book> findStudentRest(@PathVariable("id") Long id) {	
+    public @ResponseBody Optional<Book> findBookRest(@PathVariable("id") Long id) {	
     	return repository.findById(id);
+    }    
+    
+    //rest post receive 
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public String save(Book book){
+        repository.save(book);
+        return "redirect:booklist";
     }    
     //rest all books
     @RequestMapping(value="/allbooks", method = RequestMethod.GET)
-    public @ResponseBody List<Book> studentListRest() {	
+    public @ResponseBody List<Book> BookListRest() {	
         return (List<Book>) repository.findAll();
     }    
+    
+    
     
     
     

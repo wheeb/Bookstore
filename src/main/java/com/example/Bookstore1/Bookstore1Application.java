@@ -5,6 +5,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 
 import com.example.Bookstore1.domain.Book;
@@ -16,15 +18,30 @@ import com.example.Bookstore1.domain.UserRepository;
 
 
 
+
 @SpringBootApplication
-public class Bookstore1Application {
+public class Bookstore1Application extends SpringBootServletInitializer {
 	@Autowired
 	private BookRepository repository;
-
-	public static void main(String[] args) {
-		SpringApplication.run(Bookstore1Application.class, args);
-	}
 	
+	
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder
+			application) {
+			return application.sources(Bookstore1Application.class);
+			}
+			public static void main(String[] args) throws Exception {
+			SpringApplication.run(Bookstore1Application.class, args);
+			}
+
+	
+	
+	
+	
+
+//	public static void main(String[] args) {
+//		SpringApplication.run(Bookstore1Application.class, args);
+//	}
+
 	
 	@Bean
 	public CommandLineRunner demo(BookRepository repository, CategoryRepository catRepository, UserRepository uRepository) {
